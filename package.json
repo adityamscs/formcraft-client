@@ -1,36 +1,10 @@
 {
-  "name": "vital",
+  "name": "formcraft",
   "type": "module",
   "version": "1.0.0",
-  "description": "Starter template for Vite with React (TypeScript). Supports Tailwind. Vitest and @react/testing-library configured and ready to go. Also ESLint, Prettier, Husky, Commit-lint and Atomic Design for components.",
-  "homepage": "https://github.com/jvidalv/vital#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jvidalv/vital.git"
-  },
-  "author": "Josep Vidal <josepvidalvidal@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jvidalv/vital/issues"
-  },
-  "keywords": [
-    "react",
-    "vite",
-    "typescript",
-    "tailwind",
-    "template",
-    "starter",
-    "eslint",
-    "prettier"
-  ],
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not IE 11"
-  ],
   "engines": {
-    "node": ">=18",
-    "yarn": ">=1.22.5"
+    "node": ">=18"
   },
   "scripts": {
     "dev": "vite",
