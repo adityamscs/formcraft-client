@@ -1,0 +1,1227 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-border: hsl(0, 0%, 85%);
+
+  /* Primary */
+  --primary-500: #3b82f6;
+  --primary-600: #2563eb;
+  --primary-700: #1d4ed8;
+  --primary-800: #1e40af;
+
+  /* Success */
+  --success-100: #d1fae5;
+  --success-800: #065f46;
+
+  /* Warning */
+  --warning-100: #fef3c7;
+  --warning-800: #92400e;
+
+  /* Info */
+  --info-100: #dbeafe;
+  --info-800: #1e40af;
+
+  /* Shadows */
+  --shadow-soft: 0 2px 15px -3px rgba(0, 0, 0, 0.07),
+    0 10px 20px -2px rgba(0, 0, 0, 0.04);
+  --shadow-medium: 0 4px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 30px -5px rgba(0, 0, 0, 0.04);
+  --shadow-large: 0 10px 40px -10px rgba(0, 0, 0, 0.1),
+    0 20px 50px -10px rgba(0, 0, 0, 0.04);
+}
+
+@layer base {
+  body {
+    font-family: "Inter", sans-serif;
+    background: linear-gradient(to bottom right, #f8fafc, #dbeafe);
+    color: #0f172a;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  .dark {
+    color-scheme: dark;
+  }
+  
+  .dark body {
+    background: linear-gradient(to bottom right, #0b1220, #0f172a) !important;
+    color: #e5e7eb !important;
+  }
+
+  /* Ensure dark mode is applied to html element */
+  html.dark {
+    color-scheme: dark;
+  }
+
+  html.dark body {
+    background: linear-gradient(to bottom right, #0b1220, #0f172a) !important;
+    color: #e5e7eb !important;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@layer components {
+  .fade-in {
+    animation: fade-in 0.3s ease-in-out;
+  }
+
+  .slide-up {
+    animation: slide-up 0.3s ease-out;
+  }
+
+  .scale-in {
+    animation: scale-in 0.2s ease-out;
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+
+  .shadow-large {
+    box-shadow: var(--shadow-large);
+  }
+
+  .badge-success {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+    background-color: var(--success-100);
+    color: var(--success-800);
+  }
+
+  .badge-warning {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+    background-color: var(--warning-100);
+    color: var(--warning-800);
+  }
+
+  .badge-info {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+    background-color: var(--info-100);
+    color: var(--info-800);
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-soft transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl font-medium border border-gray-200 text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 shadow-soft transition-colors;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white rounded-2xl p-6 border border-gray-200 shadow-soft;
+  }
+
+  .card-compact {
+    @apply bg-white rounded-xl p-4 border border-gray-200 shadow-soft;
+  }
+
+  /* Inputs */
+  .input-field {
+    @apply block w-full px-3 py-2.5 rounded-lg border border-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition;
+  }
+
+  /* Glass/blur surfaces */
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl shadow-soft;
+  }
+}
+
+/* Dark mode overrides - must be outside @layer components */
+.dark .badge-success {
+  background-color: #065f46 !important;
+  color: #d1fae5 !important;
+}
+
+.dark .badge-warning {
+  background-color: #92400e !important;
+  color: #fef3c7 !important;
+}
+
+.dark .badge-info {
+  background-color: #1e40af !important;
+  color: #dbeafe !important;
+}
+
+.dark .btn-primary {
+  background-color: #3b82f6 !important;
+}
+
+.dark .btn-primary:hover {
+  background-color: #60a5fa !important;
+}
+
+.dark .btn-primary:focus {
+  --tw-ring-offset-width: 0px;
+}
+
+.dark .btn-secondary {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+
+.dark .btn-secondary:hover {
+  background-color: #334155 !important;
+}
+
+.dark .btn-secondary:focus {
+  --tw-ring-offset-width: 0px;
+}
+
+.dark .card {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+.dark .card-compact {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+.dark .input-field {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+}
+
+.dark .input-field::placeholder {
+  color: #94a3b8 !important;
+}
+
+.dark .glass {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+/* Dark mode text variants */
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: #f8fafc;
+}
+
+.dark p, .dark span, .dark div {
+  color: #e2e8f0;
+}
+
+.dark .text-gray-600 {
+  color: #94a3b8;
+}
+
+.dark .text-gray-500 {
+  color: #94a3b8;
+}
+
+.dark .text-gray-900 {
+  color: #f8fafc;
+}
+
+.dark .text-gray-800 {
+  color: #f1f5f9;
+}
+
+.dark .bg-gray-50 {
+  background-color: #1e293b;
+}
+
+.dark .border-gray-200 {
+  border-color: #334155;
+}
+
+/* Additional dark mode overrides for specific elements */
+.dark .bg-white {
+  background-color: #1e293b;
+}
+
+.dark .text-gray-700 {
+  color: #e2e8f0;
+}
+
+.dark .text-gray-600 {
+  color: #94a3b8;
+}
+
+.dark .text-gray-500 {
+  color: #94a3b8;
+}
+
+.dark .text-gray-400 {
+  color: #64748b;
+}
+
+.dark .text-gray-300 {
+  color: #475569;
+}
+
+.dark .text-gray-200 {
+  color: #334155;
+}
+
+.dark .text-gray-100 {
+  color: #1e293b;
+}
+
+.dark .bg-gray-100 {
+  background-color: #1e293b;
+}
+
+.dark .bg-gray-200 {
+  background-color: #334155;
+}
+
+.dark .bg-gray-300 {
+  background-color: #475569;
+}
+
+.dark .bg-gray-400 {
+  background-color: #64748b;
+}
+
+.dark .bg-gray-500 {
+  background-color: #94a3b8;
+}
+
+.dark .bg-gray-600 {
+  background-color: #cbd5e1;
+}
+
+.dark .bg-gray-700 {
+  background-color: #e2e8f0;
+}
+
+.dark .bg-gray-800 {
+  background-color: #f1f5f9;
+}
+
+.dark .bg-gray-900 {
+  background-color: #f8fafc;
+}
+
+.dark .border-gray-100 {
+  border-color: #1e293b;
+}
+
+.dark .border-gray-300 {
+  border-color: #475569;
+}
+
+.dark .border-gray-400 {
+  border-color: #64748b;
+}
+
+.dark .border-gray-500 {
+  border-color: #94a3b8;
+}
+
+.dark .border-gray-600 {
+  border-color: #cbd5e1;
+}
+
+.dark .border-gray-700 {
+  border-color: #e2e8f0;
+}
+
+.dark .border-gray-800 {
+  border-color: #f1f5f9;
+}
+
+.dark .border-gray-900 {
+  border-color: #f8fafc;
+}
+
+/* Form-specific dark mode overrides */
+.dark .bg-blue-100\/80 {
+  background-color: rgba(59, 130, 246, 0.15);
+}
+
+.dark .bg-blue-100\/50 {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.dark .bg-emerald-50 {
+  background-color: rgba(6, 78, 59, 0.15);
+}
+
+.dark .bg-amber-50 {
+  background-color: rgba(120, 53, 15, 0.15);
+}
+
+.dark .bg-purple-50 {
+  background-color: rgba(88, 28, 135, 0.15);
+}
+
+.dark .bg-pink-50 {
+  background-color: rgba(157, 23, 77, 0.15);
+}
+
+.dark .bg-cyan-50 {
+  background-color: rgba(21, 94, 117, 0.15);
+}
+
+.dark .bg-indigo-50 {
+  background-color: rgba(67, 56, 202, 0.15);
+}
+
+.dark .bg-green-50 {
+  background-color: rgba(22, 101, 52, 0.15);
+}
+
+.dark .bg-orange-50 {
+  background-color: rgba(194, 65, 12, 0.15);
+}
+
+.dark .bg-red-50 {
+  background-color: rgba(153, 27, 27, 0.15);
+}
+
+.dark .bg-yellow-50 {
+  background-color: rgba(161, 98, 7, 0.15);
+}
+
+.dark .bg-teal-50 {
+  background-color: rgba(19, 78, 74, 0.15);
+}
+
+.dark .bg-violet-50 {
+  background-color: rgba(91, 33, 182, 0.15);
+}
+
+.dark .bg-fuchsia-50 {
+  background-color: rgba(134, 25, 143, 0.15);
+}
+
+.dark .bg-rose-50 {
+  background-color: rgba(190, 18, 60, 0.15);
+}
+
+.dark .bg-sky-50 {
+  background-color: rgba(12, 74, 110, 0.15);
+}
+
+.dark .bg-lime-50 {
+  background-color: rgba(77, 124, 15, 0.15);
+}
+
+.dark .bg-stone-50 {
+  background-color: rgba(68, 64, 60, 0.15);
+}
+
+.dark .bg-neutral-50 {
+  background-color: rgba(64, 64, 64, 0.15);
+}
+
+.dark .bg-zinc-50 {
+  background-color: rgba(68, 64, 60, 0.15);
+}
+
+.dark .bg-slate-50 {
+  background-color: rgba(30, 41, 59, 0.15);
+}
+
+/* Additional dark mode overrides for dashboard cards and form elements */
+.dark .bg-blue-50 {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+.dark .bg-indigo-50 {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+.dark .bg-emerald-50 {
+  background-color: rgba(6, 78, 59, 0.8) !important;
+}
+
+.dark .bg-green-50 {
+  background-color: rgba(6, 78, 59, 0.8) !important;
+}
+
+.dark .bg-amber-50 {
+  background-color: rgba(120, 53, 15, 0.8) !important;
+}
+
+.dark .bg-yellow-50 {
+  background-color: rgba(120, 53, 15, 0.8) !important;
+}
+
+.dark .bg-orange-50 {
+  background-color: rgba(120, 53, 15, 0.8) !important;
+}
+
+.dark .bg-purple-50 {
+  background-color: rgba(88, 28, 135, 0.8) !important;
+}
+
+.dark .bg-pink-50 {
+  background-color: rgba(88, 28, 135, 0.8) !important;
+}
+
+.dark .bg-cyan-50 {
+  background-color: rgba(21, 94, 117, 0.8) !important;
+}
+
+.dark .bg-teal-50 {
+  background-color: rgba(21, 94, 117, 0.8) !important;
+}
+
+.dark .bg-violet-50 {
+  background-color: rgba(91, 33, 182, 0.8) !important;
+}
+
+.dark .bg-fuchsia-50 {
+  background-color: rgba(91, 33, 182, 0.8) !important;
+}
+
+.dark .bg-rose-50 {
+  background-color: rgba(190, 18, 60, 0.8) !important;
+}
+
+.dark .bg-sky-50 {
+  background-color: rgba(12, 74, 110, 0.8) !important;
+}
+
+.dark .bg-lime-50 {
+  background-color: rgba(77, 124, 15, 0.8) !important;
+}
+
+.dark .bg-stone-50 {
+  background-color: rgba(68, 64, 60, 0.8) !important;
+}
+
+.dark .bg-neutral-50 {
+  background-color: rgba(64, 64, 64, 0.8) !important;
+}
+
+.dark .bg-zinc-50 {
+  background-color: rgba(68, 64, 60, 0.8) !important;
+}
+
+.dark .bg-slate-50 {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+/* Dark mode overrides for specific component backgrounds */
+.dark .bg-gradient-to-br.from-blue-50.to-indigo-50 {
+  background: linear-gradient(to bottom right, #1e293b, #334155) !important;
+}
+
+.dark .bg-gradient-to-br.from-emerald-50.to-green-50 {
+  background: linear-gradient(to bottom right, #1e293b, #334155) !important;
+}
+
+.dark .bg-gradient-to-br.from-amber-50.to-orange-50 {
+  background: linear-gradient(to bottom right, #1e293b, #334155) !important;
+}
+
+.dark .bg-gradient-to-br.from-purple-50.to-pink-50 {
+  background: linear-gradient(to bottom right, #1e293b, #334155) !important;
+}
+
+.dark .bg-gradient-to-br.from-emerald-50.to-cyan-50 {
+  background: linear-gradient(to bottom right, #1e293b, #334155) !important;
+}
+
+/* Dark mode overrides for navigation elements */
+.dark .bg-blue-100\/80 {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+.dark .bg-blue-100\/50 {
+  background-color: rgba(30, 41, 59, 0.6) !important;
+}
+
+/* Dark mode overrides for text colors on light backgrounds */
+.dark .bg-blue-50 .text-gray-700,
+.dark .bg-blue-50 .text-gray-800,
+.dark .bg-blue-50 .text-gray-900,
+.dark .bg-indigo-50 .text-gray-700,
+.dark .bg-indigo-50 .text-gray-800,
+.dark .bg-indigo-50 .text-gray-900,
+.dark .bg-emerald-50 .text-gray-700,
+.dark .bg-emerald-50 .text-gray-800,
+.dark .bg-emerald-50 .text-gray-900,
+.dark .bg-green-50 .text-gray-700,
+.dark .bg-green-50 .text-gray-800,
+.dark .bg-green-50 .text-gray-900,
+.dark .bg-amber-50 .text-gray-700,
+.dark .bg-amber-50 .text-gray-800,
+.dark .bg-amber-50 .text-gray-900,
+.dark .bg-yellow-50 .text-gray-700,
+.dark .bg-yellow-50 .text-gray-800,
+.dark .bg-yellow-50 .text-gray-900,
+.dark .bg-orange-50 .text-gray-700,
+.dark .bg-orange-50 .text-gray-800,
+.dark .bg-orange-50 .text-gray-900 {
+  color: #f8fafc !important;
+}
+
+/* Additional dark mode overrides for specific UI elements */
+.dark .bg-blue-100 {
+  background-color: rgba(30, 41, 59, 0.9) !important;
+}
+
+.dark .bg-blue-200 {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+.dark .bg-blue-300 {
+  background-color: rgba(30, 41, 59, 0.7) !important;
+}
+
+.dark .bg-blue-400 {
+  background-color: rgba(30, 41, 59, 0.6) !important;
+}
+
+.dark .bg-blue-500 {
+  background-color: rgba(30, 41, 59, 0.5) !important;
+}
+
+.dark .bg-blue-600 {
+  background-color: rgba(30, 41, 59, 0.4) !important;
+}
+
+.dark .bg-blue-700 {
+  background-color: rgba(30, 41, 59, 0.3) !important;
+}
+
+.dark .bg-blue-800 {
+  background-color: rgba(30, 41, 59, 0.2) !important;
+}
+
+.dark .bg-blue-900 {
+  background-color: rgba(30, 41, 59, 0.1) !important;
+}
+
+/* Dark mode overrides for specific dashboard elements */
+.dark .bg-gradient-to-br.from-blue-50.to-indigo-50 {
+  background: linear-gradient(to bottom right, #1e293b, #334155);
+}
+
+.dark .bg-gradient-to-br.from-emerald-50.to-green-50 {
+  background: linear-gradient(to bottom right, #1e293b, #334155);
+}
+
+.dark .bg-gradient-to-br.from-amber-50.to-orange-50 {
+  background: linear-gradient(to bottom right, #1e293b, #334155);
+}
+
+.dark .bg-gradient-to-br.from-purple-50.to-pink-50 {
+  background: linear-gradient(to bottom right, #1e293b, #334155);
+}
+
+.dark .bg-gradient-to-br.from-emerald-50.to-cyan-50 {
+  background: linear-gradient(to bottom right, #1e293b, #334155);
+}
+
+/* Dark mode overrides for form elements and cards */
+.dark .bg-white\/70 {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+.dark .bg-white\/50 {
+  background-color: rgba(30, 41, 59, 0.6) !important;
+}
+
+.dark .bg-white\/30 {
+  background-color: rgba(30, 41, 59, 0.4) !important;
+}
+
+.dark .bg-white\/20 {
+  background-color: rgba(30, 41, 59, 0.3) !important;
+}
+
+.dark .bg-white\/10 {
+  background-color: rgba(30, 41, 59, 0.2) !important;
+}
+
+/* Dark mode overrides for specific text colors */
+.dark .text-blue-600 {
+  color: #60a5fa !important;
+}
+
+.dark .text-blue-700 {
+  color: #93c5fd !important;
+}
+
+.dark .text-indigo-600 {
+  color: #a78bfa !important;
+}
+
+.dark .text-indigo-700 {
+  color: #c4b5fd !important;
+}
+
+.dark .text-emerald-600 {
+  color: #34d399 !important;
+}
+
+.dark .text-emerald-700 {
+  color: #6ee7b7 !important;
+}
+
+.dark .text-amber-600 {
+  color: #fbbf24 !important;
+}
+
+.dark .text-amber-700 {
+  color: #fcd34d !important;
+}
+
+/* Button hover states in dark mode */
+.dark .hover\:bg-gray-50:hover {
+  background-color: #334155;
+}
+
+.dark .hover\:bg-gray-100:hover {
+  background-color: #475569;
+}
+
+.dark .hover\:bg-gray-200:hover {
+  background-color: #64748b;
+}
+
+.dark .hover\:bg-gray-300:hover {
+  background-color: #94a3b8;
+}
+
+.dark .hover\:bg-gray-400:hover {
+  background-color: #cbd5e1;
+}
+
+.dark .hover\:bg-gray-500:hover {
+  background-color: #e2e8f0;
+}
+
+.dark .hover\:bg-gray-600:hover {
+  background-color: #f1f5f9;
+}
+
+.dark .hover\:bg-gray-700:hover {
+  background-color: #f8fafc;
+}
+
+.dark .hover\:bg-gray-800:hover {
+  background-color: #f1f5f9;
+}
+
+.dark .hover\:bg-gray-900:hover {
+  background-color: #e2e8f0;
+}
+
+/* Border hover states in dark mode */
+.dark .hover\:border-gray-300:hover {
+  border-color: #475569;
+}
+
+.dark .hover\:border-gray-400:hover {
+  border-color: #64748b;
+}
+
+.dark .hover\:border-gray-500:hover {
+  border-color: #94a3b8;
+}
+
+.dark .hover\:border-gray-600:hover {
+  border-color: #cbd5e1;
+}
+
+.dark .hover\:border-gray-700:hover {
+  border-color: #e2e8f0;
+}
+
+.dark .hover\:border-gray-800:hover {
+  border-color: #f1f5f9;
+}
+
+.dark .hover\:border-gray-900:hover {
+  border-color: #f8fafc;
+}
+
+/* Specific component dark mode overrides */
+.dark .bg-gradient-to-br.from-slate-50.via-blue-50.to-indigo-50 {
+  background: linear-gradient(to bottom right, #020617, #0f172a, #0f172a);
+}
+
+.dark .bg-gradient-to-r.from-blue-700.to-indigo-700 {
+  background: linear-gradient(to right, #93c5fd, #c4b5fd);
+}
+
+.dark .bg-gradient-to-br.from-gray-100.to-gray-200 {
+  background: linear-gradient(to bottom right, #1e293b, #334155);
+}
+
+.dark .bg-gradient-to-br.from-blue-100.to-indigo-100 {
+  background: linear-gradient(to bottom right, #1e293b, #334155);
+}
+
+.dark .bg-gradient-to-br.from-emerald-100.to-green-100 {
+  background: linear-gradient(to bottom right, #1e293b, #334155);
+}
+
+.dark .bg-gradient-to-br.from-amber-100.to-orange-100 {
+  background: linear-gradient(to bottom right, #1e293b, #334155);
+}
+
+.dark .bg-gradient-to-br.from-purple-50.to-pink-50 {
+  background: linear-gradient(to bottom right, #1e293b, #334155);
+}
+
+.dark .bg-gradient-to-br.from-emerald-50.to-cyan-50 {
+  background: linear-gradient(to bottom right, #1e293b, #334155);
+}
+
+.dark .bg-gradient-to-br.from-blue-50.to-indigo-50 {
+  background: linear-gradient(to bottom right, #1e293b, #334155);
+}
+
+.dark .bg-gradient-to-br.from-gray-100.to-gray-200 {
+  background: linear-gradient(to bottom right, #1e293b, #334155);
+}
+
+.dark .bg-gradient-to-br.from-blue-100.to-indigo-100 {
+  background: linear-gradient(to bottom right, #1e293b, #334155);
+}
+
+.dark .bg-gradient-to-br.from-emerald-100.to-green-100 {
+  background: linear-gradient(to bottom right, #1e293b, #334155);
+}
+
+.dark .bg-gradient-to-br.from-amber-100.to-orange-100 {
+  background: linear-gradient(to bottom right, #1e293b, #334155);
+}
+
+.dark .bg-gradient-to-br.from-purple-50.to-pink-50 {
+  background: linear-gradient(to bottom right, #1e293b, #334155);
+}
+
+.dark .bg-gradient-to-br.from-emerald-50.to-cyan-50 {
+  background: linear-gradient(to bottom right, #1e293b, #334155);
+}
+
+.dark .bg-gradient-to-br.from-blue-50.to-indigo-50 {
+  background: linear-gradient(to bottom right, #1e293b, #334155);
+}
+
+/* Text color overrides for specific components */
+.dark .text-gray-600 {
+  color: #94a3b8;
+}
+
+.dark .text-gray-700 {
+  color: #e2e8f0;
+}
+
+.dark .text-gray-800 {
+  color: #f1f5f9;
+}
+
+.dark .text-gray-900 {
+  color: #f8fafc;
+}
+
+.dark .text-gray-500 {
+  color: #94a3b8;
+}
+
+.dark .text-gray-400 {
+  color: #64748b;
+}
+
+.dark .text-gray-300 {
+  color: #475569;
+}
+
+.dark .text-gray-200 {
+  color: #334155;
+}
+
+.dark .text-gray-100 {
+  color: #1e293b;
+}
+
+/* Background color overrides for specific components */
+.dark .bg-gray-50\/50 {
+  background-color: rgba(30, 41, 59, 0.5) !important;
+}
+
+.dark .bg-gray-50 {
+  background-color: #1e293b !important;
+}
+
+.dark .bg-gray-100 {
+  background-color: #334155 !important;
+}
+
+.dark .bg-gray-200 {
+  background-color: #475569 !important;
+}
+
+.dark .bg-gray-300 {
+  background-color: #64748b !important;
+}
+
+.dark .bg-gray-400 {
+  background-color: #94a3b8 !important;
+}
+
+.dark .bg-gray-500 {
+  background-color: #cbd5e1 !important;
+}
+
+.dark .bg-gray-600 {
+  background-color: #e2e8f0 !important;
+}
+
+.dark .bg-gray-700 {
+  background-color: #f1f5f9 !important;
+}
+
+.dark .bg-gray-800 {
+  background-color: #f8fafc !important;
+}
+
+.dark .bg-gray-900 {
+  background-color: #f1f5f9 !important;
+}
+
+/* Border color overrides for specific components */
+.dark .border-gray-200 {
+  border-color: #334155 !important;
+}
+
+.dark .border-gray-300 {
+  border-color: #475569 !important;
+}
+
+.dark .border-gray-400 {
+  border-color: #64748b !important;
+}
+
+.dark .border-gray-500 {
+  border-color: #94a3b8 !important;
+}
+
+.dark .border-gray-600 {
+  border-color: #cbd5e1 !important;
+}
+
+.dark .border-gray-700 {
+  border-color: #e2e8f0 !important;
+}
+
+.dark .border-gray-800 {
+  border-color: #f1f5f9 !important;
+}
+
+.dark .border-gray-900 {
+  border-color: #f8fafc !important;
+}
+
+/* Additional specific dark mode overrides for component classes */
+.dark .bg-gradient-to-br.from-blue-50.to-indigo-50,
+.dark .bg-gradient-to-br.from-emerald-50.to-green-50,
+.dark .bg-gradient-to-br.from-amber-50.to-orange-50 {
+  background: linear-gradient(to bottom right, #1e293b, #334155) !important;
+}
+
+.dark .bg-gradient-to-br.from-purple-50.to-pink-50,
+.dark .bg-gradient-to-br.from-emerald-50.to-cyan-50,
+.dark .bg-gradient-to-br.from-blue-50.to-indigo-50 {
+  background: linear-gradient(to bottom right, #1e293b, #334155) !important;
+}
+
+/* Dark mode overrides for specific button and navigation states */
+.dark .bg-blue-100\/80 {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+.dark .bg-blue-100\/50 {
+  background-color: rgba(30, 41, 59, 0.6) !important;
+}
+
+.dark .bg-blue-500\/20 {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+.dark .bg-slate-800\/60 {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+/* Dark mode overrides for text colors in navigation */
+.dark .text-blue-700 {
+  color: #60a5fa !important;
+}
+
+.dark .text-blue-300 {
+  color: #93c5fd !important;
+}
+
+.dark .text-slate-300 {
+  color: #cbd5e1 !important;
+}
+
+/* Dark mode overrides for hover states */
+.dark .hover\:bg-gray-100\/50:hover {
+  background-color: rgba(30, 41, 59, 0.6) !important;
+}
+
+.dark .hover\:bg-slate-800\/60:hover {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+/* Dark mode overrides for specific form elements */
+.dark .bg-gray-50\/50 {
+  background-color: rgba(30, 41, 59, 0.5) !important;
+}
+
+/* Ensure all card backgrounds are properly dark in dark mode */
+.dark .card,
+.dark .card-compact {
+  background-color: #1e293b !important;
+}
+
+/* Specific overrides for the exact classes used in the dashboard */
+.dark .bg-blue-50,
+.dark .bg-indigo-50,
+.dark .bg-emerald-50,
+.dark .bg-green-50,
+.dark .bg-amber-50,
+.dark .bg-yellow-50,
+.dark .bg-orange-50 {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+/* Debug: Add a visible indicator that dark mode CSS is loaded
+.dark::before {
+  content: "DARK MODE ACTIVE";
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: red;
+  color: white;
+  padding: 4px 8px;
+  font-size: 12px;
+  z-index: 9999;
+  pointer-events: none;
+} */
+
+/* Dark mode overrides for question type buttons and form elements */
+.dark .bg-gradient-to-br.from-purple-50.to-pink-50 {
+  background: linear-gradient(to bottom right, #1e293b, #334155) !important;
+}
+
+.dark .bg-gradient-to-br.from-emerald-50.to-cyan-50 {
+  background: linear-gradient(to bottom right, #1e293b, #334155) !important;
+}
+
+.dark .bg-gradient-to-br.from-blue-50.to-indigo-50 {
+  background: linear-gradient(to bottom right, #1e293b, #334155) !important;
+}
+
+/* Dark mode overrides for button text colors */
+.dark .bg-gradient-to-br.from-purple-50.to-pink-50 .text-purple-700,
+.dark .bg-gradient-to-br.from-emerald-50.to-cyan-50 .text-emerald-700,
+.dark .bg-gradient-to-br.from-blue-50.to-indigo-50 .text-blue-700 {
+  color: #f8fafc !important;
+}
+
+/* Dark mode overrides for button borders */
+.dark .bg-gradient-to-br.from-purple-50.to-pink-50 {
+  border-color: #475569 !important;
+}
+
+.dark .bg-gradient-to-br.from-emerald-50.to-cyan-50 {
+  border-color: #475569 !important;
+}
+
+.dark .bg-gradient-to-br.from-blue-50.to-indigo-50 {
+  border-color: #475569 !important;
+}
+
+/* Dark mode overrides for button default states */
+.dark .bg-gradient-to-r.from-purple-50.to-pink-50 {
+  background: linear-gradient(to right, #1e293b, #334155) !important;
+}
+
+.dark .bg-gradient-to-r.from-emerald-50.to-cyan-50 {
+  background: linear-gradient(to right, #1e293b, #334155) !important;
+}
+
+.dark .bg-gradient-to-r.from-blue-50.to-indigo-50 {
+  background: linear-gradient(to right, #1e293b, #334155) !important;
+}
+
+/* Dark mode overrides for button hover states */
+.dark .bg-gradient-to-r.from-purple-50.to-pink-50:hover {
+  background: linear-gradient(to right, #334155, #475569) !important;
+}
+
+.dark .bg-gradient-to-r.from-emerald-50.to-cyan-50:hover {
+  background: linear-gradient(to right, #334155, #475569) !important;
+}
+
+.dark .bg-gradient-to-r.from-blue-50.to-indigo-50:hover {
+  background: linear-gradient(to right, #334155, #475569) !important;
+}
+
+/* Dark mode overrides for specific button classes used in FormBuilder */
+.dark .bg-purple-50 {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+.dark .bg-pink-50 {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+.dark .bg-emerald-50 {
+  background-color: rgba(6, 78, 59, 0.8) !important;
+}
+
+.dark .bg-cyan-50 {
+  background-color: rgba(21, 94, 117, 0.8) !important;
+}
+
+.dark .bg-blue-50 {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+.dark .bg-indigo-50 {
+  background-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+/* Dark mode overrides for button text colors */
+.dark .text-purple-700 {
+  color: #f8fafc !important;
+}
+
+.dark .text-emerald-700 {
+  color: #f8fafc !important;
+}
+
+.dark .text-blue-700 {
+  color: #f8fafc !important;
+}
+
+/* Dark mode overrides for button borders */
+.dark .border-purple-200 {
+  border-color: #475569 !important;
+}
+
+.dark .border-emerald-200 {
+  border-color: #475569 !important;
+}
+
+.dark .border-blue-200 {
+  border-color: #475569 !important;
+}
+
+/* Dark mode overrides for button hover states with more specific selectors */
+.dark .hover\:from-purple-100:hover {
+  background: linear-gradient(to right, #334155, #475569) !important;
+}
+
+.dark .hover\:to-pink-100:hover {
+  background: linear-gradient(to right, #334155, #475569) !important;
+}
+
+.dark .hover\:from-emerald-100:hover {
+  background: linear-gradient(to right, #334155, #475569) !important;
+}
+
+.dark .hover\:to-cyan-100:hover {
+  background: linear-gradient(to right, #334155, #475569) !important;
+}
+
+.dark .hover\:from-blue-100:hover {
+  background: linear-gradient(to right, #334155, #475569) !important;
+}
+
+.dark .hover\:to-indigo-100:hover {
+  background: linear-gradient(to right, #334155, #475569) !important;
+}
+
+/* Dark mode overrides for button background colors */
+.dark .bg-purple-100 {
+  background-color: rgba(30, 41, 59, 0.9) !important;
+}
+
+.dark .bg-pink-100 {
+  background-color: rgba(30, 41, 59, 0.9) !important;
+}
+
+.dark .bg-emerald-100 {
+  background-color: rgba(6, 78, 59, 0.9) !important;
+}
+
+.dark .bg-cyan-100 {
+  background-color: rgba(21, 94, 117, 0.9) !important;
+}
+
+.dark .bg-blue-100 {
+  background-color: rgba(30, 41, 59, 0.9) !important;
+}
+
+.dark .bg-indigo-100 {
+  background-color: rgba(30, 41, 59, 0.9) !important;
+}
+
+/* Dark mode overrides for button text colors in hover states */
+.dark .hover\:text-purple-700:hover {
+  color: #f8fafc !important;
+}
+
+.dark .hover\:text-emerald-700:hover {
+  color: #f8fafc !important;
+}
+
+.dark .hover\:text-blue-700:hover {
+  color: #f8fafc !important;
+}
+
+/* Dark mode overrides for button border colors in hover states */
+.dark .hover\:border-purple-300:hover {
+  border-color: #64748b !important;
+}
+
+.dark .hover\:border-emerald-300:hover {
+  border-color: #64748b !important;
+}
+
+.dark .hover\:border-blue-300:hover {
+  border-color: #64748b !important;
+}
